@@ -1,0 +1,34 @@
+.button-component {
+    background-color: transparent;
+    font-family: 'ProximaNova', sans-serif;
+
+    padding: 9px 16px;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    border: 1px solid transparent;
+    user-select: none;
+    cursor: pointer;
+}
+
+
+// Button type
+.primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+
+    span {
+        color: var(--white);
+    }
+
+    &:hover {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #FE2C55;
+    }
+}
+
+// Button Size
+.small {}
+
+.medium {}
+
+.large {}
