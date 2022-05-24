@@ -1,6 +1,12 @@
 function IconSearch({ className }) {
   return (
-    <svg className={className} width="24" height="24" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={className}
+      width="24"
+      height="24"
+      viewBox="0 0 48 48"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -10,8 +16,16 @@ function IconSearch({ className }) {
   );
 }
 
-const IconClose = () => (
-  <svg width="16" height="16" viewBox="0 0 48 48" fill="rgba(22, 24, 35, 0.34)" xmlns="http://www.w3.org/2000/svg">
+const IconClose = ({ className, ...props }) => (
+  <svg
+    className={className}
+    width="16"
+    height="16"
+    viewBox="0 0 48 48"
+    fill="rgba(22, 24, 35, 0.34)"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -20,14 +34,15 @@ const IconClose = () => (
   </svg>
 );
 
-const IconLoadingInput = () => (
+const IconLoadingInput = ({ className, ...props }) => (
   <svg
-    class="tiktok-d58skf-StyledLoadingCircle ev30f214"
+    className={className}
     width="16"
     height="16"
     viewBox="0 0 48 48"
     fill="rgba(22, 24, 35, 0.34)"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       fillRule="evenodd"
@@ -37,4 +52,38 @@ const IconLoadingInput = () => (
   </svg>
 );
 
-export { IconSearch, IconClose, IconLoadingInput };
+const IconPlus = ({ className, width = '2rem', height = '2rem' }) => (
+  <svg
+    className={className}
+    width={width}
+    height={height}
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M8 2.5C7.58579 2.5 7.25 2.83579 7.25 3.25V7.25H3.25C2.83579 7.25 2.5 7.58579 2.5 8C2.5 8.41421 2.83579 8.75 3.25 8.75H7.25V12.75C7.25 13.1642 7.58579 13.5 8 13.5C8.41421 13.5 8.75 13.1642 8.75 12.75V8.75H12.75C13.1642 8.75 13.5 8.41421 13.5 8C13.5 7.58579 13.1642 7.25 12.75 7.25H8.75V3.25C8.75 2.83579 8.41421 2.5 8 2.5Z"
+    ></path>
+  </svg>
+);
+
+const Icon3Dot = ({ className, width = '2rem', height = '2rem' }) => (
+  <svg
+    className={className}
+    width={width}
+    height={height}
+    viewBox="0 0 48 48"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M24 4C26.2091 4 28 5.79086 28 8C28 10.2091 26.2091 12 24 12C21.7909 12 20 10.2091 20 8C20 5.79086 21.7909 4 24 4ZM24 20C26.2091 20 28 21.7909 28 24C28 26.2091 26.2091 28 24 28C21.7909 28 20 26.2091 20 24C20 21.7909 21.7909 20 24 20ZM24 36C26.2091 36 28 37.7909 28 40C28 42.2091 26.2091 44 24 44C21.7909 44 20 42.2091 20 40C20 37.7909 21.7909 36 24 36Z"
+    ></path>
+  </svg>
+);
+
+export { IconSearch, IconClose, IconLoadingInput, IconPlus, Icon3Dot };

@@ -5,8 +5,22 @@ import styles from './Button.module.scss';
 
 const cx = classnames.bind(styles);
 
-const Button = ({ primary = false, size = false, to, href, className, children, onClick, ...props }) => {
+const Button = ({
+  primary = false,
+  outline = false,
+  border = false,
+  size = false,
+  to,
+  href,
+  className,
+  children,
+  onClick,
+  iconLeft,
+  iconRight,
+  ...props
+}) => {
   let Component = 'button';
+
   const _props = {
     onClick,
     ...props,
@@ -19,6 +33,7 @@ const Button = ({ primary = false, size = false, to, href, className, children, 
     Component = 'a';
     _props.href = href;
   }
+
   let _size = false;
 
   if (size === 'small' || size === 'medium' || size === 'large') {
@@ -27,12 +42,17 @@ const Button = ({ primary = false, size = false, to, href, className, children, 
 
   const classes = cx('button-component', {
     primary,
+    outline,
+    border,
+    [className]: className,
     [_size]: _size,
   });
 
   return (
     <Component className={classes} {..._props}>
-      <span>{children}</span>
+      {iconLeft && <span className={cx('icon')}>{iconLeft}</span>}
+      <span className={cx('content')}>{children}</span>
+      {iconRight && <span className={cx('icon')}>{iconRight}</span>}
     </Component>
   );
 };
