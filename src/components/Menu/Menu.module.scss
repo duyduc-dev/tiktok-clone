@@ -1,0 +1,59 @@
+.menu-settings {
+    min-width: 223px;
+    padding: 8px 0;
+}
+
+
+.menu-item {
+    justify-content: start;
+    padding: 8px 16px;
+    width: 100%;
+
+
+    h5 {
+        font-weight: 600;
+        font-size: 1.6rem;
+        margin-left: 5px;
+        line-height: 1.5;
+    }
+
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.separate {
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+}
+
+
+.header-menu {
+    position: relative;
+    height: 50px;
+    margin-top: -8px;
+    display: flex;
+    align-items: center;
+
+    .icon-cancel {
+        margin-left: 10px;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        user-select: none;
+    }
+}

@@ -1,23 +1,24 @@
 import classnames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 
 import styles from './Account.module.scss';
 import Image from '../Image';
+import { IconTick } from '../Icons';
 
 const cx = classnames.bind(styles);
 
-const Account = () => {
+const Account = ({ avatar, nickname, username, tick }) => {
   return (
-    <div className={cx('wrapper')}>
-      <Image
-        className={cx('avatar')}
-        src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/ea0854578085ab26effc2c7b8cefa270~c5_100x100.jpeg?x-expires=1653570000&x-signature=1%2BkcZuDzpCq6U3kiEZo%2FDjcr1iU%3D"
-        alt="hoaa"
-      />
+    <Link to={`/@${nickname}`} className={cx('wrapper')}>
+      <Image className={cx('avatar')} src={avatar} alt={nickname} />
       <div className={cx('user')}>
-        <h5 className={cx('username')}>Nguyen Van A</h5>
-        <p className={cx('nickname')}>nguyenvana</p>
+        <h5 className={cx('username')}>
+          <p>{username}</p>
+          {tick && <IconTick />}
+        </h5>
+        <p className={cx('nickname')}>{nickname}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

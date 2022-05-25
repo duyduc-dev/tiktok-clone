@@ -1,94 +1,71 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import classnames from 'classnames/bind';
-import HeadlessTippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import { Link } from 'react-router-dom';
+import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Image from '~/components/Image';
-import {
-  Icon3Dot,
-  IconClose,
-  IconLoadingInput,
-  IconPlus,
-  IconSearch,
-} from '~/components/Icons';
+import { Icon3Dot, IconInbox, IconMessage, IconPlus } from '~/components/Icons';
 import Button from '~/components/Button';
-import Wrapper from '~/components/Wrapper';
-import Account from '~/components/Account';
 import Menu from '~/components/Menu';
+import { MENU_LOGOUT, MENU_USER_LOGIN } from '~/configs/menuHeader';
+import Search from '../Search';
+import routesConfig from '~/configs/routes';
 
 const cx = classnames.bind(styles);
 
 function Header() {
-  const [searchValueInput, setSearchValueInput] = useState('');
-  const [searchResult, setSearchResult] = useState([]);
-  const [isShowSearchResult, setisShowSearchResult] = useState(false);
-
-  const inputRef = useRef();
-
-  const handleClickClose = (e) => {
-    setSearchValueInput('');
-    inputRef.current.focus();
-  };
+  const [isUserLogIn, setIsUserLogIn] = useState(true);
 
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <Button to={'/'} className={cx('logo-tiktok')}>
+        <Link to={routesConfig.HOME} className={cx('logo-tiktok')}>
           <Image src={images.logo} alt="tiktok" />
-        </Button>
-        <HeadlessTippy
-          visible={isShowSearchResult && searchResult.length > 0}
-          interactive
-          placement="bottom"
-          render={(attr) => (
-            <div tabIndex="-1" {...attr}>
-              <Wrapper>
-                <h5 className={cx('header-tippy')}>Accounts</h5>
-                <Account />
-                <Account />
-                <Account />
-              </Wrapper>
-            </div>
-          )}
-        >
-          <div className={cx('search')}>
-            <input
-              ref={inputRef}
-              className={cx('input-search')}
-              placeholder="Search accounts and videos"
-              value={searchValueInput}
-              onChange={(e) => setSearchValueInput(e.target.value)}
-            />
-            {searchValueInput && (
-              <IconClose
-                className={cx('icon-input')}
-                onClick={handleClickClose}
-              />
-            )}
-            {/* <IconLoadingInput className={cx('icon-input')} /> */}
-            <div className={cx('wrap-icon-search')}>
-              <IconSearch className={cx('icon-search')} />
-            </div>
-          </div>
-        </HeadlessTippy>
+        </Link>
+        <Search />
         <div className={cx('action')}>
-          <Button
-            className={cx('btn-action')}
-            border
-            to="/upload"
-            size="medium"
-            iconLeft={<IconPlus />}
-          >
+          <Button className={cx('btn-action')} border size="medium" iconLeft={<IconPlus />}>
             Upload
           </Button>
-          <Button className={cx('btn-action')} primary size="medium">
-            Log in
-          </Button>
-          <Menu>
-            <button className={cx('btn-menu')}>
-              <Icon3Dot />
-            </button>
+          {!isUserLogIn ? (
+            <Button className={cx('btn-action')} primary size="medium">
+              Log in
+            </Button>
+          ) : (
+            <>
+              <Tippy delay={[0, 20]} content="Message">
+                <Button className={cx('btn-action')}>
+                  <IconMessage />
+                </Button>
+              </Tippy>
+              <Tippy delay={[0, 20]} content="Inbox">
+                <Button className={cx('btn-action')}>
+                  <IconInbox />
+                  <span className={cx('quantity-nor')}>9+</span>
+                </Button>
+              </Tippy>
+            </>
+          )}
+
+          <Menu list={isUserLogIn ? MENU_USER_LOGIN : MENU_LOGOUT}>
+            {isUserLogIn ? (
+              <Button className={cx('btn-menu')}>
+                <Image
+                  className={cx('avatar')}
+                  src={
+                    'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/bcb64245911b9f94ef29e2a2e785f20d~c5_720x720.jpeg?x-expires=1653624000&x-signature=tlBmQkrNQsNVfNRvUZydqEAWuvI%3D'
+                  }
+                  alt="duyduc"
+                />
+              </Button>
+            ) : (
+              <Button className={cx('btn-menu')}>
+                <Icon3Dot />
+              </Button>
+            )}
           </Menu>
         </div>
       </div>
