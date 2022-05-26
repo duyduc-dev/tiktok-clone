@@ -59,11 +59,11 @@ const Search = () => {
       visible={isShowSearchResult && searchResult.length > 0}
       interactive
       placement="bottom"
+      onClickOutside={(e) => setIsShowSearchResult(false)}
       render={(attr) => (
         <div className={cx('search-result')} tabIndex="-1" {...attr}>
           <Wrapper>
             <h5 className={cx('header-tippy')}>Accounts</h5>
-
             {searchResult.map((user) => (
               <Account
                 key={user.id}
@@ -84,6 +84,7 @@ const Search = () => {
           placeholder="Search accounts and videos"
           value={searchValueInput}
           onChange={handleInputValue}
+          onFocus={(e) => setIsShowSearchResult(true)}
         />
         {searchValueInput && !loading && (
           <IconClose className={cx('icon-input')} onClick={handleClickClose} />
