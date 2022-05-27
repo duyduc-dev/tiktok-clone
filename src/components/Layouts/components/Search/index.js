@@ -55,46 +55,50 @@ const Search = () => {
   }, [debounceValue]);
 
   return (
-    <HeadlessTippy
-      visible={isShowSearchResult && searchResult.length > 0}
-      interactive
-      placement="bottom"
-      onClickOutside={(e) => setIsShowSearchResult(false)}
-      render={(attr) => (
-        <div className={cx('search-result')} tabIndex="-1" {...attr}>
-          <Wrapper>
-            <h5 className={cx('header-tippy')}>Accounts</h5>
-            {searchResult.map((user) => (
-              <Account
-                key={user.id}
-                avatar={user.avatar}
-                nickname={user.nickname}
-                username={user.full_name}
-                tick={user.tick}
-              />
-            ))}
-          </Wrapper>
-        </div>
-      )}
-    >
-      <div className={cx('search')}>
-        <input
-          ref={inputRef}
-          className={cx('input-search')}
-          placeholder="Search accounts and videos"
-          value={searchValueInput}
-          onChange={handleInputValue}
-          onFocus={(e) => setIsShowSearchResult(true)}
-        />
-        {searchValueInput && !loading && (
-          <IconClose className={cx('icon-input')} onClick={handleClickClose} />
+    // Using a wrapper <div> tag around the reference element
+    // solves this by creating a new parentNode context.
+    <div>
+      <HeadlessTippy
+        visible={isShowSearchResult && searchResult.length > 0}
+        interactive
+        placement="bottom"
+        onClickOutside={(e) => setIsShowSearchResult(false)}
+        render={(attr) => (
+          <div className={cx('search-result')} tabIndex="-1" {...attr}>
+            <Wrapper>
+              <h5 className={cx('header-tippy')}>Accounts</h5>
+              {searchResult.map((user) => (
+                <Account
+                  key={user.id}
+                  avatar={user.avatar}
+                  nickname={user.nickname}
+                  username={user.full_name}
+                  tick={user.tick}
+                />
+              ))}
+            </Wrapper>
+          </div>
         )}
-        {loading && <IconLoadingInput className={cx('icon-input', 'icon-loading')} />}
-        <div className={cx('wrap-icon-search')}>
-          <IconSearch className={cx('icon-search')} />
+      >
+        <div className={cx('search')}>
+          <input
+            ref={inputRef}
+            className={cx('input-search')}
+            placeholder="Search accounts and videos"
+            value={searchValueInput}
+            onChange={handleInputValue}
+            onFocus={(e) => setIsShowSearchResult(true)}
+          />
+          {searchValueInput && !loading && (
+            <IconClose className={cx('icon-input')} onClick={handleClickClose} />
+          )}
+          {loading && <IconLoadingInput className={cx('icon-input', 'icon-loading')} />}
+          <div className={cx('wrap-icon-search')}>
+            <IconSearch className={cx('icon-search')} />
+          </div>
         </div>
-      </div>
-    </HeadlessTippy>
+      </HeadlessTippy>
+    </div>
   );
 };
 

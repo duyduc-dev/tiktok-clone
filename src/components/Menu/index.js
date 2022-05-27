@@ -22,6 +22,7 @@ const Menu = ({ children, hideOnClick = false, list = [], onChange = defaultFN }
       hideOnClick={hideOnClick}
       placement="bottom-end"
       delay={[0, 500]}
+      onHide={(e) => setHistory((prev) => prev.slice(0, 1))}
       render={(attr) => (
         <Wrapper {...attr} className={cx('menu-settings')}>
           {history.length > 1 && (
@@ -35,9 +36,8 @@ const Menu = ({ children, hideOnClick = false, list = [], onChange = defaultFN }
               <span className={cx('header-title')}>{currentMenu.title}</span>
             </header>
           )}
-
-          {currentMenu.data.map((item, index) => {
-            return (
+          <div className={cx('menu-scrollbar')}>
+            {currentMenu.data.map((item, index) => (
               <MenuItem
                 key={index}
                 icon={item.icon}
@@ -52,8 +52,8 @@ const Menu = ({ children, hideOnClick = false, list = [], onChange = defaultFN }
                   }
                 }}
               />
-            );
-          })}
+            ))}
+          </div>
         </Wrapper>
       )}
     >

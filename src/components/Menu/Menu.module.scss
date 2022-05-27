@@ -1,6 +1,9 @@
 .menu-settings {
     min-width: 223px;
     padding: 8px 0;
+
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -56,4 +59,9 @@
         line-height: 22px;
         user-select: none;
     }
+}
+
+.menu-scrollbar {
+    overflow-y: auto;
+
 }
