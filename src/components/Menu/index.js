@@ -63,3 +63,4 @@ const Menu = ({ children, hideOnClick = false, list = [], onChange = defaultFN }
 };
 
 export default Menu;
+export * from './contentsMenu';

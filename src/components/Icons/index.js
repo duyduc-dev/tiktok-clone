@@ -294,6 +294,7 @@ const IconTick = ({ className }) => (
     ></path>
   </svg>
 );
+
 export {
   IconSearch,
   IconClose,

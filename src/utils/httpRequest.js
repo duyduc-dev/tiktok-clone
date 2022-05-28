@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://tiktok.fullstack.edu.vn/api/',
+  baseURL: process.env.REACT_APP_BASE_URL,
 });
 
-export const request = {
+const httpRequest = {
   get: async (path, option = {}) => {
     const res = await instance.get(path, option);
     return res.data;
   },
 };
 
-export default instance;
+export default httpRequest;

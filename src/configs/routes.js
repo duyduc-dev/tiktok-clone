@@ -1,8 +1,8 @@
-const routesConfig = {
+const routes = {
   HOME: '/',
   FOLLOWING: '/following',
   PROFILE: '/@:nickname',
   UPLOAD: '/upload',
 };
 
-export default routesConfig;
+export default routes;

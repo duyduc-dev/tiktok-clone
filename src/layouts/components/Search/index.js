@@ -7,7 +7,7 @@ import Wrapper from '~/components/Wrapper';
 import Account from '~/components/Account';
 import { IconClose, IconLoadingInput, IconSearch } from '~/components/Icons';
 import { useDebounce } from '~/hooks';
-import { searchService } from '~/service';
+import { searchService } from '~/services';
 
 const cx = classnames.bind(styles);
 
@@ -28,7 +28,7 @@ const Search = () => {
   const handleInputValue = (e) => {
     const searchValue = e.target.value;
     if (!searchValue.startsWith(' ')) {
-      setSearchValueInput(e.target.value);
+      setSearchValueInput(searchValue);
     }
   };
 
@@ -36,7 +36,6 @@ const Search = () => {
 
   useEffect(() => {
     if (!debounceValue.trim()) {
-      setIsShowSearchResult(false);
       setSearchResult([]);
       return;
     }

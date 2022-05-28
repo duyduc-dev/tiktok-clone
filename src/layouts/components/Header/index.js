@@ -9,8 +9,7 @@ import images from '~/assets/images';
 import Image from '~/components/Image';
 import { Icon3Dot, IconInbox, IconMessage, IconPlus } from '~/components/Icons';
 import Button from '~/components/Button';
-import Menu from '~/components/Menu';
-import { MENU_LOGOUT, MENU_USER_LOGIN } from '~/configs/menuHeader';
+import Menu, { MENU_LOGOUT, MENU_USER_LOGIN } from '~/components/Menu';
 import Search from '../Search';
 import routesConfig from '~/configs/routes';
 

@@ -1,8 +1,8 @@
-import { request } from '~/configs/axios';
+import { httpRequest } from '~/utils';
 
 const searchService = async (q, type = 'less') => {
   try {
-    const res = await request.get('users/search', {
+    const res = await httpRequest.get('users/search', {
       params: {
         q,
         type,
@@ -10,7 +10,7 @@ const searchService = async (q, type = 'less') => {
     });
     return res?.data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 
