@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import classnames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
-import { Link } from 'react-router-dom';
+
 import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
+
 import images from '~/assets/images';
 import Image from '~/components/Image';
 import { Icon3Dot, IconInbox, IconMessage, IconPlus } from '~/components/Icons';
@@ -17,6 +19,10 @@ const cx = classnames.bind(styles);
 
 function Header() {
   const [isUserLogIn, setIsUserLogIn] = useState(true);
+
+  const handleMenuChange = (data) => {
+    console.log(data);
+  };
 
   return (
     <header className={cx('wrapper')}>
@@ -43,13 +49,12 @@ function Header() {
               <Tippy delay={[0, 20]} content="Inbox">
                 <Button className={cx('btn-action')}>
                   <IconInbox />
-                  <span className={cx('quantity-nor')}>9+</span>
+                  <span className={cx('quantity-nor')}>98</span>
                 </Button>
               </Tippy>
             </>
           )}
-
-          <Menu list={isUserLogIn ? MENU_USER_LOGIN : MENU_LOGOUT}>
+          <Menu onChange={handleMenuChange} list={isUserLogIn ? MENU_USER_LOGIN : MENU_LOGOUT}>
             {isUserLogIn ? (
               <Button className={cx('btn-menu')}>
                 <Image

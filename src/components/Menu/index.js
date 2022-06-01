@@ -1,11 +1,12 @@
-import classnames from 'classnames/bind';
 import { useState } from 'react';
+import classnames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 
-import styles from './Menu.module.scss';
-import Wrapper from '../Wrapper';
-import MenuItem from './MenuItem';
 import { IconArrowLeft } from '../Icons';
+import MenuItem from './MenuItem';
+import Wrapper from '../Wrapper';
+
+import styles from './Menu.module.scss';
 
 const cx = classnames.bind(styles);
 

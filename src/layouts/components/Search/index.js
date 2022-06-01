@@ -1,8 +1,9 @@
+import { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
-import { useEffect, useRef, useState } from 'react';
 
 import styles from './Search.module.scss';
+
 import Wrapper from '~/components/Wrapper';
 import Account from '~/components/Account';
 import { IconClose, IconLoadingInput, IconSearch } from '~/components/Icons';
